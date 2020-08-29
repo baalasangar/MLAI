@@ -6,8 +6,144 @@ import numpy as np
 x = np.random.rand(10)
 y = x * 2
 # 
-plt.plot(x,y,x,y,"g>")
+plt.plot(x,y) # plot the Graph with Blue line
+plt.plot(x,y,"g>") # g> green Traingle 
+
+# - Solid line style
+# -- Dashed line style
+# -. Dash-dot line style
+# : Dotted line style
+# . Point marker
+# , Pixel marker
+# o Circle marker
+# v Triangle_down marker
+# ^ Triangle_up marker
+# < Triangle_left marker
+# > Triangle_right marker
+# 1 Tri_down marker
+# 2 Tri_up marker
+# 3 Tri_left marker
+# 4 Tri_right marker
+# s Square marker
+# p Pentagon marker
+# * Star marker
+# h Hexagon1 marker
+# H Hexagon2 marker
+# + Plus marker
+# x X marker
+# D Diamond marker
+# d Thin_diamond marker
+# | Vline marker
+# _ Hline marker
+
 plt.title("Title")
 plt.xlabel("Xlabel")
 plt.ylabel("ylable")
 plt.show()
+
+month = ["jan","Feb","march"]
+mdata = [250,350,150]
+max(mdata)
+plt.bar(month, mdata)
+#plt.xticks(np.array(0,max(mdata),step=50))
+plt.show() 
+
+# Horizontally  Bar chart ()
+
+month = ["Jan","Feb","Mar","Apr","May"]
+HYDsales = [50,60,55,75,65]
+BNGsales = [55,50,70,60,80]
+
+index = np.arange(5)
+width = 0.30
+plt.bar(index,HYDsales,width,color="green",label="Hyd Sales")
+plt.bar(index+width,BNGsales,width,color="blue",label="Bang Sales") # Index+Width move the second bar next to firts bar
+plt.xticks(index+ width/2, month) 
+plt.legend(loc="best")
+plt.show()
+
+# Horizontal  Stacked bar chart
+plt.bar(index,HYDsales,width,color="blue",label="Hyd Sales")
+plt.bar(index,BNGsales,width,color="red",label="Bang Sales",bottom=HYDsales)
+plt.title("Vertically Stacked Bar Graphs")
+plt.xlabel("Months")
+plt.ylabel("Sales")
+plt.xticks(index, month)
+plt.legend(loc="best")
+plt.show()
+
+
+plt.barh(index,HYDsales,width,color="green",label="Hyd Sales")
+plt.barh(index+width,BNGsales,width,color="blue",label="Bang Sales")
+plt.yticks(index+width/2,month)
+plt.legend(loc="best")
+plt.show()
+
+
+plt.barh(index,HYDsales,width,color="green",label="Hyd Sales")
+plt.barh(index,BNGsales,width,color="blue",label="Bang Sales",left=HYDsales)
+plt.yticks(index,month)
+plt.legend(loc="best")
+plt.show()
+
+# Pie Chart
+
+HYDsales = [30,60,55,90,35]
+perArr = list(map(lambda x : round((x/sum(HYDsales))*100),HYDsales))
+plt.pie(perArr,labels=month,explode=5*[0.1])
+plt.show()
+
+# Histogram
+
+data1 = np.random.randn(1000)
+plt.hist(data1)
+plt.show()
+
+# Scatter plot
+
+data2 = np.random.randn(1000)
+plt.scatter(data1, data2)
+plt.show()
+
+# 3D ploting
+
+#from mpl_toolkits import mplot3d
+
+height = np.array([130,135,120,145,165,175,180,145,150,160,140,170,165,135,155])
+weight = np.array([60,70,65,75,80,90,95,85,70,78,88,72,68,77,88])
+
+ax = plt.axes(projection="3d")
+ax.scatter3D(height,weight)
+ax.set_xlabel("Height")
+ax.set_ylabel("Weight")
+plt.show()
+
+
+
+# Multiple Charts in single graph 
+
+# When subplot is single row or single column
+plt.subplot(1,2,1)
+plt.plot([1,2,3,4],[10,20,30,40],"go")
+plt.title("1st subplot")
+plt.subplot(1,2,2)
+x = np.arange(1,5)
+y = x**5
+plt.plot(x,y,"r^")
+plt.title("2nd subplot")
+plt.suptitle("Sales Plots")
+plt.show()
+
+
+# When subplot is matrix
+
+x = np.arange(1,5)
+y = x**5
+fig, ax = plt.subplots(nrows=2,ncols=2,figsize=(6,6))
+ax[0,1].plot([1,2,3,4],[10,20,30,40],"go")
+ax[0,0].plot(x,y,'r^')
+ax[0,1].set_title("Squares")
+ax[0,0].set_title("Cubes")
+plt.show()
+
+
