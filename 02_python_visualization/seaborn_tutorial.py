@@ -85,3 +85,98 @@ sns.catplot(x="sex", y="total_bill",hue="smoker",jitter=False, data=tips)
 # adjusts the points along the categorical axis using an algorithm that prevents them from overlapping. It can give a better representation of the distribution of observations, although it only works well for relatively small datasets
 
 sns.catplot(x="day", y="total_bill", kind="swarm", data=tips);
+
+
+# Categorial distripution plot
+# Kind = "boxen" and "violin"
+sns.catplot(data=tips,x="smoker",y="tip",hue="sex", kind="box")
+
+sns.catplot(data=tips,x="smoker",y="tip",hue="sex", kind="violin",inner="stick")
+
+# Combining plots
+
+viplot = sns.catplot(data=tips,x="smoker",y="tip", kind="violin")
+sns.swarmplot(data=tips,x="smoker",y="tip",ax=viplot.ax)
+
+
+# Plots for doing statistical estimation 
+
+titanic = sns.load_dataset("titanic")
+titanic.dtypes
+titanic.head(10)
+titanic["fare"].describe()
+#df = titanic.groupby(["sex","class"]).describe()
+#df["survived"]
+
+# bar plot
+sns.catplot(kind="bar", data=titanic,x="sex",y="survived", hue="class")
+
+sns.catplot(kind="count", data=titanic.query("survived == 1"), x="class")
+
+sns.catplot(kind="point",data=titanic, x="class", y="survived", hue="sex")
+
+
+# Visualizing the distripution of a dataset
+
+# plotting univariable distripution
+
+sns.distplot(titanic['age'])
+
+sns.distplot(titanic['age'],kde = False)
+
+sns.distplot(titanic['age'],hist= False)
+
+# plotting bivariable distripution
+# Joinplot - show both scatterplot and distripution density for individual variables
+
+sns.jointplot(data=titanic,x="age",y="fare")
+
+sns.jointplot(data=titanic,x="age",y="fare",kind="hex")
+
+sns.jointplot(data=titanic,x="age",y="fare",kind="kde")
+
+
+# pairwise relationship in data
+
+titanic[["age","fare","parch"]]
+
+sns.pairplot(titanic[["age","fare","parch"]])
+
+
+# linear regression
+
+tips.dtypes
+
+sns.lmplot(data=tips,x="total_bill", y="tip")
+
+tips["sex_bool"] = tips["sex"] == "Female"
+tips["big_tip"] = (tips.tip / tips.total_bill) > .15
+
+# logistic=True can be used for ploting logistic regression - need to explore more
+sns.lmplot(x="total_bill", y="big_tip", data=tips,
+           logistic=True, y_jitter=.03);
+
+#  Multiple plot 
+
+g = sns.FacetGrid(tips, col="sex", hue="smoker")
+g.map(sns.scatterplot, "total_bill", "tip", alpha=.7)
+g.add_legend();
+
+g = sns.FacetGrid(tips, row="smoker", col="time", margin_titles=True)
+g.map(sns.regplot, "size", "total_bill", color=".3", fit_reg=False, x_jitter=.1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
