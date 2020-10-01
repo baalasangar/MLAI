@@ -32,8 +32,7 @@ sns.relplot(x="total_bill", y="tip",hue="size", data=tips, palette=cmap)
 
 # Line Chart
 
-df = pd.DataFrame(dict(time=np.arange(500),
-                       value=np.random.randn(500).cumsum()))
+df = pd.DataFrame(dict(time=np.arange(500), value=np.random.randn(500).cumsum()))
 g = sns.relplot(x="time", y="value", kind="line", data=df)
 
 # if there are multiple measure for the X value.default behavior in seaborn is to aggregate the multiple measurements at each x value by plotting the mean
@@ -96,7 +95,7 @@ sns.catplot(data=tips,x="smoker",y="tip",hue="sex", kind="violin",inner="stick")
 # Combining plots
 
 viplot = sns.catplot(data=tips,x="smoker",y="tip", kind="violin")
-sns.swarmplot(data=tips,x="smoker",y="tip",ax=viplot.ax)
+sns.swarmplot(data=tips,x="smoker",y="tip",ax=viplot.ax) # Not working
 
 
 # Plots for doing statistical estimation 
@@ -138,7 +137,7 @@ sns.jointplot(data=titanic,x="age",y="fare",kind="kde")
 
 # pairwise relationship in data
 
-titanic[["age","fare","parch"]]
+titanic[["age","fare","parch","class"]]
 
 sns.pairplot(titanic[["age","fare","parch"]])
 
