@@ -13157,29 +13157,12 @@ div#notebook {
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Custome-Class">Custome Class<a class="anchor-link" href="#Custome-Class">&#182;</a></h5>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[226]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># class Columns(BaseEstimator, TransformerMixin):</span>
-<span class="c1">#     def __init__(self, columns):</span>
-<span class="c1">#         self.columns = columns</span>
-
-<span class="c1">#     def fit(self, X, y=None):</span>
-<span class="c1">#         return self</span>
-
-<span class="c1">#     def transform(self, X, y=None):</span>
-<span class="c1">#         return X[self.columns]</span>
-
-<span class="k">def</span> <span class="nf">check_distribution</span><span class="p">(</span><span class="n">traindata</span><span class="p">,</span><span class="n">testdata</span><span class="p">,</span><span class="n">columns_list</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">check_distribution</span><span class="p">(</span><span class="n">traindata</span><span class="p">,</span><span class="n">testdata</span><span class="p">,</span><span class="n">columns_list</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">column_name</span> <span class="ow">in</span> <span class="n">columns_list</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------&quot;</span><span class="p">,</span><span class="n">column_name</span><span class="p">,</span><span class="s2">&quot;------------&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">traindata</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">/</span> <span class="n">traindata</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
